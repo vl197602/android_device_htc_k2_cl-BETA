@@ -35,4 +35,4 @@
 /sdcard		vfat		/dev/block/mmcblk1p1	/dev/block/mmcblk1
 /system		ext4		/dev/block/mmcblk0p32
 /devlog         ext4    /dev/block/mmcblk0p25
-/internal_sdcard        vfat    fat
+/internal_sdcard        vfat    /dev/block/mmcblk0p35
