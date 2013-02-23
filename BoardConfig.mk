@@ -25,7 +25,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/htc/totemc2/kernel
 
-TARGET_RECOVERY_INITRC := device/htc/totemc2/recovery/init-cwm.rc
+TARGET_RECOVERY_INITRC := device/htc/totemc2/recovery/init.rc
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 # Use this flag if the board has a ext4 partition larger than 2gb
