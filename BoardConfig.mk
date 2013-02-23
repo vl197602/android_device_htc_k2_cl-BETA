@@ -30,3 +30,9 @@ TARGET_RECOVERY_INITRC := device/htc/totemc2/recovery/init.rc
 BOARD_HAS_NO_SELECT_BUTTON := true
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
+
+DEVICE_RESOLUTION :=540x960
+TW_INTERNAL_STORAGE_PATH := "/internal_sdcard"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "internal_sdcard"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
