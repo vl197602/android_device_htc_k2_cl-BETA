@@ -24,8 +24,7 @@ PRODUCT_COPY_FILES += \
     device/htc/totemc2/recovery/sbin/detect_key:recovery/root/sbin/detect_key \
     device/htc/totemc2/recovery/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
     device/htc/totemc2/recovery/sbin/power_test:recovery/root/sbin/power_test  \
-    device/htc/totemc2/recovery/sbin/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
-    device/htc/totemc2/modules/wp_mod.ko:recovery/root/sbin/wp_mod.ko
+    device/htc/totemc2/recovery/sbin/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_totemc2
