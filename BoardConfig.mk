@@ -4,7 +4,7 @@ USE_CAMERA_STUB := true
 -include vendor/htc/totemc2/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := unknown
+TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOOTLOADER_BOARD_NAME := totemc2
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -25,7 +25,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_PREBUILT_KERNEL := device/htc/totemc2/kernel
 
-TARGET_RECOVERY_INITRC := device/htc/totemc2/recovery/init-cwm.rc
+TARGET_RECOVERY_INITRC := device/htc/totemc2/recovery/init-twrp.rc
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 # Use this flag if the board has a ext4 partition larger than 2gb
