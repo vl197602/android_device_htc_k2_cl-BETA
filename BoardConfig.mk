@@ -1,7 +1,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/htc/totemc2/BoardConfigVendor.mk
+-include vendor/htc/k2cl/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := msm8960
@@ -16,16 +16,16 @@ BOARD_KERNEL_BASE := 0x80400000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_FORCE_RAMDISK_ADDRESS := 0x81808000
 
-# fix this up by examining /proc/mtd on a running device
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_FLASH_BLOCK_SIZE := 131072
+# fix this up by examining /proc/emmc on a running device
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16776704
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1426062336
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 1241513472
+BOARD_FLASH_BLOCK_SIZE := 512
 
-TARGET_PREBUILT_KERNEL := device/htc/totemc2/kernel
+TARGET_PREBUILT_KERNEL := device/htc/k2cl/prebuilt/kernel
 
-TARGET_RECOVERY_INITRC := device/htc/totemc2/recovery/init-twrp.rc
+TARGET_RECOVERY_INITRC := device/htc/k2cl/recovery/init-twrp.rc
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 # Use this flag if the board has a ext4 partition larger than 2gb
