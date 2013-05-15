@@ -7,6 +7,8 @@ USE_CAMERA_STUB := true
 TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := k2cl
 TARGET_NO_BOOTLOADER := true
 
 # Architecture
@@ -16,11 +18,15 @@ TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 user_debug=31
 BOARD_KERNEL_BASE := 0x80400000
 BOARD_KERNEL_PAGESIZE := 2048
+
+# In jellybean this is okay, but in cm10.1 use
+# BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x81808000
 BOARD_FORCE_RAMDISK_ADDRESS := 0x81808000
 
 # fix this up by examining /proc/emmc on a running device
@@ -31,17 +37,24 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1241513472
 BOARD_FLASH_BLOCK_SIZE := 512
 
 TARGET_PREBUILT_KERNEL := device/htc/k2cl/prebuilt/kernel
-TARGET_RECOVERY_INITRC := device/htc/k2cl/recovery/init-twrp.rc
 
+# Allow Power Button To Be Select In Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
+
+# EXT4 larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
 
-# Display
-DEVICE_RESOLUTION := 480x800
+# Vold
+BOARD_VOLD_MAX_PARTITIONS := 38
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
+# Custom Graphics In Recovery
+BOARD_CUSTOM_GRAPHICS := ../../../device/htc/k2cl/recovery/graphics.c
+
+# TWRP Specific
+DEVICE_RESOLUTION := 480x800
 TW_INTERNAL_STORAGE_PATH := "/internal_sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "internal_sdcard"
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_DEFAULT_EXTERNAL_STORAGE := true
-#RECOVERY_GRAPHICS_USE_LINELENGTH := true
