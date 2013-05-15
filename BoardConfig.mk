@@ -3,14 +3,21 @@ USE_CAMERA_STUB := true
 # inherit from the proprietary version
 -include vendor/htc/k2cl/BoardConfigVendor.mk
 
-TARGET_NO_BOOTLOADER := true
+# Platform
 TARGET_BOARD_PLATFORM := msm8960
-TARGET_BOOTLOADER_BOARD_NAME := totemc2
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
+
+TARGET_NO_BOOTLOADER := true
+
+# Architecture
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_ARCH := arm
+TARGET_CPU_SMP := true
 
+# Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 user_debug=31
 BOARD_KERNEL_BASE := 0x80400000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -24,14 +31,14 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1241513472
 BOARD_FLASH_BLOCK_SIZE := 512
 
 TARGET_PREBUILT_KERNEL := device/htc/k2cl/prebuilt/kernel
-
 TARGET_RECOVERY_INITRC := device/htc/k2cl/recovery/init-twrp.rc
 
 BOARD_HAS_NO_SELECT_BUTTON := true
-# Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
 
+# Display
 DEVICE_RESOLUTION := 480x800
+
 TW_INTERNAL_STORAGE_PATH := "/internal_sdcard"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "internal_sdcard"
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
