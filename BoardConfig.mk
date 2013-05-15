@@ -48,9 +48,6 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_VOLD_MAX_PARTITIONS := 38
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
-# Custom Graphics In Recovery
-BOARD_CUSTOM_GRAPHICS := ../../../device/htc/k2cl/recovery/graphics.c
-
 # TWRP Specific
 DEVICE_RESOLUTION := 480x800
 TW_INTERNAL_STORAGE_PATH := "/internal_sdcard"
@@ -58,3 +55,4 @@ TW_INTERNAL_STORAGE_MOUNT_POINT := "internal_sdcard"
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_DEFAULT_EXTERNAL_STORAGE := true
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/htc/k2cl/recovery/graphics.c
