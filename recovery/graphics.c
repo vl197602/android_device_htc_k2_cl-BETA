@@ -109,9 +109,6 @@ static int get_framebuffer(GGLSurface *fb)
 
     fprintf(stderr, "Pixel format: %dx%d @ %dbpp\n", vi.xres, vi.yres, vi.bits_per_pixel);
 
-    // Attempt to fix screen
-    vi.xres += 16;
-
     vi.bits_per_pixel = PIXEL_SIZE * 8;
     if (PIXEL_FORMAT == GGL_PIXEL_FORMAT_BGRA_8888) {
         fprintf(stderr, "Pixel format: BGRA_8888\n");
@@ -191,7 +188,7 @@ static int get_framebuffer(GGLSurface *fb)
 #endif
 
     fb->version = sizeof(*fb);
-    fb->width = vi.xres;
+    fb->width = vi.xres + 16;
     fb->height = vi.yres;
 #ifdef BOARD_HAS_JANKY_BACKBUFFER
     printf("setting JANKY BACKBUFFER\n");
