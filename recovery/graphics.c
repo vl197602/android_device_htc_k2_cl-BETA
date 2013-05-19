@@ -188,7 +188,7 @@ static int get_framebuffer(GGLSurface *fb)
 #endif
 
     fb->version = sizeof(*fb);
-    fb->width = vi.xres + 16;
+    fb->width = vi.xres;
     fb->height = vi.yres;
 #ifdef BOARD_HAS_JANKY_BACKBUFFER
     printf("setting JANKY BACKBUFFER\n");
