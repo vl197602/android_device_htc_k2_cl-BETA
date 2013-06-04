@@ -158,7 +158,7 @@ PRODUCT_LOCALES += en_US hdpi
 $(call inherit-product-if-exists, vendor/htc/k2cl/k2cl-vendor.mk)
 
 # call dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-hdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Discard inherited values and use our own instead.
 PRODUCT_DEVICE := k2cl
