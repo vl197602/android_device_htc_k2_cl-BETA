@@ -2,7 +2,7 @@
 
 /recovery	emmc		/dev/block/mmcblk0p21
 /boot		emmc		/dev/block/mmcblk0p20
-/cache		ext4		/dev/block/mmcblk0p33
-/data		ext4		/dev/block/mmcblk0p34
-/system		ext4		/dev/block/mmcblk0p32
+/cache		ext4		/dev/block/mmcblk0p36
+/data		ext4		/dev/block/mmcblk0p37
+/system		ext4		/dev/block/mmcblk0p35
 /misc		emmc		/dev/block/mmcblk0p22
