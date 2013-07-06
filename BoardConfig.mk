@@ -48,17 +48,5 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_VOLD_MAX_PARTITIONS := 38
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
-# TWRP Specific
-DEVICE_RESOLUTION := 480x800
-
-# TWRP Internal SD
-TW_INTERNAL_STORAGE_PATH := "/int_sd"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "int_sd"
-
-# TWRP External SD
-TW_EXTERNAL_STORAGE_PATH := "/sdcard"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
-TW_DEFAULT_EXTERNAL_STORAGE := true
-
-# Fix for weird FB issue
+# Fix for weird FB issue where one buffer was off
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
