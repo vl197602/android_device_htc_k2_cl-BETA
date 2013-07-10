@@ -1,16 +1,18 @@
-# Copyright (C) 2009 The Android Open Source Project
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# Copyright (C) 2013 Simon Sickle <simon@simonsickle.com>
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
 
 #
 # This file sets variables that control the way modules are built
@@ -28,16 +30,16 @@
 -include device/htc/msm8960-common/BoardConfigCommon.mk
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := k2cl
+TARGET_BOOTLOADER_BOARD_NAME := k2_cl
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80400000
 BOARD_KERNEL_PAGE_SIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8
 BOARD_FORCE_RAMDISK_ADDRESS := 0x81808000
-
 TARGET_PREBUILT_KERNEL := device/htc/k2cl/prebuilt/kernel
 TARGET_KERNEL_CONFIG := k2_cl_defconfig
+TARGET_KERNEL_SOURCE := kernel/htc/k2
 
 # Use libril in the device tree
 BOARD_PROVIDES_LIBRIL := true
@@ -51,7 +53,7 @@ COMMON_GLOBAL_CFLAGS += -DHTCLOG
 
 # QCOM GPS
 #BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
-#BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := k2cl
+#BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := k2_cl
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
@@ -108,3 +110,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 
 # Use power button as select in recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
+
+# Fix FB flicker in recovery
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
