@@ -34,10 +34,9 @@ PRODUCT_COPY_FILES += \
     device/htc/k2_cl/recovery/sbin/detect_key:recovery/root/sbin/detect_key
 
 # HTC BT audio config
-PRODUCT_COPY_FILES += device/htc/k2_cl/configs/AudioBTID.csv:system/etc/AudioBTID.csv
-
-# QC thermald config
-PRODUCT_COPY_FILES += device/htc/msm8960-common/configs/thermald.conf:system/etc/thermald.conf
+PRODUCT_COPY_FILES += \
+    device/htc/k2_cl/configs/AudioBTID.csv:system/etc/AudioBTID.csv \
+    device/htc/k2_cl/configs/AudioBTIDnew.csv:system/etc/AudioBTIDnew.csv
 
 # vold config
 PRODUCT_COPY_FILES += \
