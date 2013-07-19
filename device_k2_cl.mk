@@ -23,9 +23,8 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/k2_cl/overlay
 
 # Boot ramdisk setup
 PRODUCT_COPY_FILES += \
-    device/htc/k2_cl/ramdisk/fstab.k2_cl:root/fstab.k2_cl \
-    device/htc/k2_cl/ramdisk/init.k2cl.rc:root/init.k2cl.rc \
-    device/htc/k2_cl/ramdisk/ueventd.k2cl.rc:root/ueventd.k2cl.rc
+    device/htc/k2_cl/ramdisk/init.target.rc:root/init.target.rc \
+    device/htc/k2_cl/ramdisk/ueventd.target.rc:root/ueventd.target.rc
 
 # recovery and custom charging
 PRODUCT_COPY_FILES += \
