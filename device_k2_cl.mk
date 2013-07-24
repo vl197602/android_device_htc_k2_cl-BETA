@@ -67,7 +67,7 @@ PRODUCT_COPY_FILES += \
 
 # Recovery
 PRODUCT_COPY_FILES += \
-    device/htc/fireball/rootdir/etc/fstab.qcom:recovery/root/fstab.qcom
+    device/htc/k2_cl/rootdir/etc/fstab.qcom:recovery/root/fstab.qcom
 
 # NFC
 PRODUCT_PACKAGES += \
