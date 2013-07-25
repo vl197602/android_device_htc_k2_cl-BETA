@@ -1,23 +1,23 @@
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# Copyright (C) 2013 Simon Sickle <simon@simonsickle.com>
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# http://www.apache.org/licenses/LICENSE-2.0
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
-#
-
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # common msm8960 configs
 $(call inherit-product, device/htc/s4-common/s4.mk)
+
+# Inherit qcom proprietary blobs
+$(call inherit-product, vendor/qcom/proprietary/qcom-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/k2_cl/overlay
 
@@ -26,10 +26,6 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.target.rc \
     remount.qcom
-
-# vold config
-PRODUCT_COPY_FILES += \
-    device/htc/k2_cl/configs/vold.fstab:system/etc/vold.fstab
 
 # wifi config
 PRODUCT_COPY_FILES += \
@@ -69,6 +65,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/k2_cl/rootdir/etc/fstab.qcom:recovery/root/fstab.qcom
 
+# Vold
+PRODUCT_COPY_FILES += device/htc/k2_cl/configs/vold.fstab:system/etc/vold.fstab
+
 # NFC
 PRODUCT_PACKAGES += \
     libnfc \
@@ -77,23 +76,29 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
-# Torch
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    e2fsck \
+    setup_fs
+
+# Build extra non-CM packages
 PRODUCT_PACKAGES += \
     Torch
 
-# Filesystem management tools
+# BT
 PRODUCT_PACKAGES += \
-    e2fsck
+    libbt-vendor
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
 # We have enough space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+# Fix bad lunch inheritance
+PRODUCT_NAME := full_k2_cl
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
@@ -106,9 +111,5 @@ $(call inherit-product-if-exists, vendor/htc/k2_cl/k2_cl-vendor.mk)
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# Discard inherited values and use our own instead.
-PRODUCT_DEVICE := k2_cl
-PRODUCT_NAME := k2_cl
-PRODUCT_BRAND := htc
-PRODUCT_MODEL := One SV
-PRODUCT_MANUFACTURER := HTC
+# Set build fingerprint / ID / Product Name ect.
+#PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=htc_k2_cl BUILD_FINGERPRINT=boost/htc/k2cl:4.1.2/JZO54K/573038:user/user-debug PRIVATE_BUILD_DESC="4.1.2 JZO54K 573038 user-debug"

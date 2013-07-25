@@ -40,9 +40,13 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x81808000
 #TARGET_PREBUILT_KERNEL := device/htc/k2_cl/prebuilt/kernel
 TARGET_KERNEL_CONFIG := k2_cl_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/k2
+TARGET_ARM_EABI_GCC_VERSION := 4.8
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/k2_cl/bluetooth
+
+# Compiler Optimization
+ARCH_ARM_HIGH_OPTIMIZATION := true
 
 # Use libril in the device tree
 BOARD_PROVIDES_LIBRIL := true
@@ -114,3 +118,6 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 # Recovery
 TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/k2_cl/recovery/kernel
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+
+BUILD_EMULATOR_SENSORS_MODULE := false
+BUILD_EMULATOR_GPS_MODULE := false
