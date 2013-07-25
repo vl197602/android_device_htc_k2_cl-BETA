@@ -41,6 +41,7 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x81808000
 TARGET_KERNEL_CONFIG := k2_cl_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/k2
 TARGET_ARM_EABI_GCC_VERSION := 4.8
+#TARGET_CPU_VARIANT := cortex-a9
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/k2_cl/bluetooth
