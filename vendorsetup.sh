@@ -20,5 +20,6 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo cm_k2_cl-userdebug
-add_lunch_combo cm_k2_cl-eng
+add_lunch_combo full_k2_cl-codefirex
+add_lunch_combo full_k2_cl-userdebug
+add_lunch_combo full_k2_cl-eng
