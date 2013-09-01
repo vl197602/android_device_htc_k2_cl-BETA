@@ -32,6 +32,10 @@
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := k2_cl
 
+# Recovery
+TARGET_RECOVERY_FSTAB := device/htc/k2_cl/ramdisk/fstab.k2_cl
+RECOVERY_FSTAB_VERSION := 2
+
 # Kernel
 #BOARD_KERNEL_BASE := 0x80400000
 #BOARD_KERNEL_PAGE_SIZE := 2048

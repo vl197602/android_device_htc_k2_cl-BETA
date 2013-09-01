@@ -27,10 +27,6 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     remount.qcom
 
-# vold config
-PRODUCT_COPY_FILES += \
-    device/htc/k2_cl/configs/vold.fstab:system/etc/vold.fstab
-
 # wifi config
 PRODUCT_COPY_FILES += \
     device/htc/k2_cl/configs/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf \
