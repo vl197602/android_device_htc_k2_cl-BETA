@@ -41,7 +41,8 @@ RECOVERY_FSTAB_VERSION := 2
 #BOARD_KERNEL_PAGE_SIZE := 2048
 #BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x81808000
-#TARGET_PREBUILT_KERNEL := device/htc/k2_cl/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/htc/k2_cl/prebuilt/kernel
+BUILD_KERNEL := false
 TARGET_KERNEL_CONFIG := k2_cl_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/k2
 
