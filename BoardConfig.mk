@@ -45,6 +45,7 @@ TARGET_PREBUILT_KERNEL := device/htc/k2_cl/prebuilt/kernel
 BUILD_KERNEL := false
 TARGET_KERNEL_CONFIG := k2_cl_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/k2
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/k2_cl/bluetooth
