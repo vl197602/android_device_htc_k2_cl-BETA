@@ -1,14 +1,7 @@
 #!/bin/sh
 
-BASE=../../../vendor/htc/k2_cl/proprietary
-rm -rf $BASE/*
+set -e
 
-for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
-  DIR=`dirname $FILE`
-  if [ ! -d $BASE/$DIR ]; then
-    mkdir -p $BASE/$DIR
-  fi
-  adb pull /system/$FILE $BASE/$FILE
-done
-
-./setup-makefiles.sh
+export DEVICE=k2_cl
+export VENDOR=htc
+./../s4-common/extract-files.sh $@
