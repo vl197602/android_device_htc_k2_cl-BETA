@@ -1,21 +1,25 @@
-#
-# Copyright (C) 2013 Simon Sickle <simon@simonsickle.com>
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
-#
-
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),k2_cl)
-    include $(call first-makefiles-under,$(LOCAL_PATH))
-endif
+include $(CLEAR_VARS)
+LOCAL_MODULE		:= fstab.qcom
+LOCAL_MODULE_TAGS	:= optional eng
+LOCAL_MODULE_CLASS	:= ETC
+LOCAL_SRC_FILES		:= etc/fstab.qcom
+LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE		:= init.target.rc
+LOCAL_MODULE_TAGS	:= optional eng
+LOCAL_MODULE_CLASS	:= ETC
+LOCAL_SRC_FILES		:= etc/init.target.rc
+LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE		:= remount.qcom
+LOCAL_MODULE_TAGS	:= optional eng
+LOCAL_MODULE_CLASS	:= ETC
+LOCAL_SRC_FILES		:= etc/remount.qcom
+LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
