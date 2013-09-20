@@ -16,16 +16,28 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# common msm8960 configs
-$(call inherit-product, device/htc/s4-common/s4.mk)
+# common 8960 configs
+$(call inherit-product, device/htc/msm8960-common/msm8960.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/k2_cl/overlay
 
 # Boot ramdisk setup
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.target.rc \
-    remount.qcom
+	remount.qcom \
+    init.qcom.sh \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    ueventd.qcom.rc
+    
+# Qualcomm scripts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/init.qcom.bt.sh:/system/etc/init.qcom.bt.sh \
+    $(LOCAL_PATH)/configs/init.qcom.fm.sh:/system/etc/init.qcom.fm.sh \
+    $(LOCAL_PATH)/configs/init.qcom.post_boot.sh:/system/etc/init.qcom.post_boot.sh \
+    $(LOCAL_PATH)/configs/init.qcom.q6_links.sh:/system/etc/init.qcom.q6_links.sh \
+    $(LOCAL_PATH)/configs/init.qcom.radio_links.sh:/system/etc/init.qcom.radio_links.sh \
+    $(LOCAL_PATH)/configs/init.qcom.sdio.sh:/system/etc/init.qcom.sdio.sh \
+    $(LOCAL_PATH)/configs/init.qcom.wifi.sh:/system/etc/init.qcom.wifi.sh
 
 # wifi config
 PRODUCT_COPY_FILES += \
@@ -60,6 +72,18 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/k2_cl/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/k2_cl/idc/projector_input.idc:system/usr/idc/projector_input.idc
+    
+# Audio config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+
+# Thermal config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermald.conf:system/etc/thermald.conf
+
+# GPS config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf
 
 # Recovery
 PRODUCT_COPY_FILES += \
