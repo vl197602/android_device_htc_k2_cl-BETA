@@ -26,9 +26,24 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
+<<<<<<< HEAD
 # inherit from S4 common
 -include device/htc/s4-common/BoardConfigCommon.mk
 
+=======
+# inherit from common msm8960
+-include device/htc/msm8960-common/BoardConfigCommon.mk
+
+# Release Tools (commented out for now)
+# TARGET_RELEASETOOLS_EXTENSIONS := device/htc/totemc2
+
+# Require bootloader version (commented out for now)
+# TARGET_BOARD_INFO_FILE ?= device/htc/totemc2/board-info.txt
+
+# Include Path
+TARGET_SPECIFIC_HEADER_PATH := device/htc/totemc2/include
+
+>>>>>>> d4d27f0... totemc2: dis-inherit s4-common
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := k2_cl
 
@@ -37,6 +52,7 @@ TARGET_RECOVERY_FSTAB := device/htc/k2_cl/ramdisk/fstab.k2_cl
 RECOVERY_FSTAB_VERSION := 2
 
 # Kernel
+<<<<<<< HEAD
 #BOARD_KERNEL_BASE := 0x80400000
 #BOARD_KERNEL_PAGE_SIZE := 2048
 #BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8
@@ -49,10 +65,37 @@ TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/k2_cl/bluetooth
+=======
+BOARD_KERNEL_BASE := 0x80400000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01400000
+TARGET_KERNEL_SOURCE := kernel/htc/msm8960
+TARGET_KERNEL_CONFIG := tc2_defconfig
+>>>>>>> d4d27f0... totemc2: dis-inherit s4-common
+
+# Audio
+BOARD_USES_FLUENCE_INCALL := true
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH_BCM := true
+
+# Camera
+USE_CAMERA_STUB := false
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP_CAMERA_ABI_HACK
+COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB
+COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
+COMMON_GLOBAL_CFLAGS += -DHTC_CAMERA_HARDWARE
+
+# GPS
+BOARD_HAVE_NEW_QC_GPS := true
 
 # Use libril in the device tree
 BOARD_PROVIDES_LIBRIL := true
 
+<<<<<<< HEAD
 # Boot animation
 TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480
@@ -63,10 +106,12 @@ TARGET_SCREEN_WIDTH := 480
 
 # Lights
 #TARGET_PROVIDES_LIBLIGHTS := true
+=======
+
+>>>>>>> d4d27f0... totemc2: dis-inherit s4-common
 
 # Wifi related defines
 WIFI_BAND                        := 802_11_ABG
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
@@ -76,6 +121,9 @@ WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcm4334.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcm4334_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_MODULE_NAME          := bcmdhd
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
 # cat /proc/emmc
 #dev:        size     erasesize name
@@ -118,5 +166,20 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Recovery
+<<<<<<< HEAD
 TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/k2_cl/recovery/kernel
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+=======
+#TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/totemc2/recovery/kernel
+TARGET_RECOVERY_FSTAB := device/htc/totemc2/rootdir/etc/fstab.qcom
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+
+# TWRP
+DEVICE_RESOLUTION := 540x960
+TW_FLASH_FROM_STORAGE := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888"
+TW_INCLUDE_DUMLOCK := true
+TW_INCLUDE_JB_CRYPTO := true
+>>>>>>> d4d27f0... totemc2: dis-inherit s4-common
