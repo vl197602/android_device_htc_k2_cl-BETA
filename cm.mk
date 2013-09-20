@@ -4,6 +4,10 @@ $(call inherit-product, vendor/cm/config/cdma.mk)
 # Release name
 PRODUCT_RELEASE_NAME := k2_cl
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 800
+TARGET_SCREEN_WIDTH := 480
+
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
@@ -14,7 +18,7 @@ $(call inherit-product, device/htc/k2_cl/device_k2_cl.mk)
 PRODUCT_DEVICE := k2_cl
 PRODUCT_NAME := cm_k2_cl
 PRODUCT_BRAND := htc
-PRODUCT_MODEL := HTC One SV
+PRODUCT_MODEL := One SV
 PRODUCT_MANUFACTURER := HTC
 
 # Set build fingerprint / ID / Product Name ect.
