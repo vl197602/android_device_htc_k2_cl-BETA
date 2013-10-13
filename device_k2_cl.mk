@@ -17,15 +17,26 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # common msm8960 configs
-$(call inherit-product, device/htc/s4-common/s4.mk)
+$(call inherit-product, device/htc/msm8960-common/msm8960.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/htc/k2_cl/overlay
 
 # Boot ramdisk setup
-PRODUCT_PACKAGES += \
-    fstab.qcom \
-    init.target.rc \
-    remount.qcom
+PRODUCT_COPY_FILES += \
+    device/htc/k2_cl/ramdisk/init.target.rc:root/init.target.rc \
+    device/htc/k2_cl/ramdisk/ueventd.target.rc:root/ueventd.target.rc
+
+# recovery and custom charging
+PRODUCT_COPY_FILES += \
+    device/htc/k2_cl/recovery/sbin/choice_fn:recovery/root/sbin/choice_fn \
+    device/htc/k2_cl/recovery/sbin/power_test:recovery/root/sbin/power_test \
+    device/htc/k2_cl/recovery/sbin/offmode_charging:recovery/root/sbin/offmode_charging \
+    device/htc/k2_cl/recovery/sbin/detect_key:recovery/root/sbin/detect_key
+
+# HTC BT audio config
+PRODUCT_COPY_FILES += \
+    device/htc/k2_cl/configs/AudioBTID.csv:system/etc/AudioBTID.csv \
+    device/htc/k2_cl/configs/AudioBTIDnew.csv:system/etc/AudioBTIDnew.csv
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -65,8 +76,9 @@ PRODUCT_COPY_FILES += \
     device/htc/k2_cl/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
     device/htc/k2_cl/idc/projector_input.idc:system/usr/idc/projector_input.idc
 
-# Recovery
+# MSM8930 firmware
 PRODUCT_COPY_FILES += \
+<<<<<<< HEAD
     device/htc/k2_cl/rootdir/etc/fstab.qcom:recovery/root/fstab.qcom
 
 # NFC
@@ -76,24 +88,75 @@ PRODUCT_PACKAGES += \
     Nfc \
     Tag \
     com.android.nfc_extras
+=======
+    device/htc/k2_cl/firmware/a300_pm4.fw:/system/etc/firmware/a300_pm4.fw \
+    device/htc/k2_cl/firmware/a300_pfp.fw:/system/etc/firmware/a300_pfp.fw \
+    device/htc/k2_cl/firmware/modem_fw.b00:/system/etc/firmware/modem_fw.b00 \
+    device/htc/k2_cl/firmware/modem_fw.b01:/system/etc/firmware/modem_fw.b01 \
+    device/htc/k2_cl/firmware/modem_fw.b02:/system/etc/firmware/modem_fw.b02 \
+    device/htc/k2_cl/firmware/modem_fw.b03:/system/etc/firmware/modem_fw.b03 \
+    device/htc/k2_cl/firmware/modem_fw.b04:/system/etc/firmware/modem_fw.b04 \
+    device/htc/k2_cl/firmware/modem_fw.b05:/system/etc/firmware/modem_fw.b05 \
+    device/htc/k2_cl/firmware/modem_fw.b06:/system/etc/firmware/modem_fw.b06 \
+    device/htc/k2_cl/firmware/modem_fw.b07:/system/etc/firmware/modem_fw.b07 \
+    device/htc/k2_cl/firmware/modem_fw.b08:/system/etc/firmware/modem_fw.b08 \
+    device/htc/k2_cl/firmware/modem_fw.b09:/system/etc/firmware/modem_fw.b09 \
+    device/htc/k2_cl/firmware/modem_fw.b10:/system/etc/firmware/modem_fw.b10 \
+    device/htc/k2_cl/firmware/modem_fw.b11:/system/etc/firmware/modem_fw.b11 \
+    device/htc/k2_cl/firmware/modem_fw.b13:/system/etc/firmware/modem_fw.b13 \
+    device/htc/k2_cl/firmware/modem_fw.b14:/system/etc/firmware/modem_fw.b14 \
+    device/htc/k2_cl/firmware/modem_fw.b21:/system/etc/firmware/modem_fw.b21 \
+    device/htc/k2_cl/firmware/modem_fw.b22:/system/etc/firmware/modem_fw.b22 \
+    device/htc/k2_cl/firmware/modem_fw.b23:/system/etc/firmware/modem_fw.b23 \
+    device/htc/k2_cl/firmware/modem_fw.b25:/system/etc/firmware/modem_fw.b25 \
+    device/htc/k2_cl/firmware/modem_fw.b26:/system/etc/firmware/modem_fw.b26 \
+    device/htc/k2_cl/firmware/modem_fw.b29:/system/etc/firmware/modem_fw.b29 \
+    device/htc/k2_cl/firmware/modem_fw.mdt:/system/etc/firmware/modem_fw.mdt \
+    device/htc/k2_cl/firmware/modem.b00:/system/etc/firmware/modem.b00 \
+    device/htc/k2_cl/firmware/modem.b01:/system/etc/firmware/modem.b01 \
+    device/htc/k2_cl/firmware/modem.b02:/system/etc/firmware/modem.b02 \
+    device/htc/k2_cl/firmware/modem.b03:/system/etc/firmware/modem.b03 \
+    device/htc/k2_cl/firmware/modem.b04:/system/etc/firmware/modem.b04 \
+    device/htc/k2_cl/firmware/modem.b05:/system/etc/firmware/modem.b05 \
+    device/htc/k2_cl/firmware/modem.b06:/system/etc/firmware/modem.b06 \
+    device/htc/k2_cl/firmware/modem.b07:/system/etc/firmware/modem.b07 \
+    device/htc/k2_cl/firmware/modem.b08:/system/etc/firmware/modem.b08 \
+    device/htc/k2_cl/firmware/modem.b09:/system/etc/firmware/modem.b09 \
+    device/htc/k2_cl/firmware/modem.b10:/system/etc/firmware/modem.b10 \
+    device/htc/k2_cl/firmware/modem.mdt:/system/etc/firmware/modem.mdt \
+    device/htc/k2_cl/firmware/q6.b00:/system/etc/firmware/q6.b00 \
+    device/htc/k2_cl/firmware/q6.b01:/system/etc/firmware/q6.b01 \
+    device/htc/k2_cl/firmware/q6.b03:/system/etc/firmware/q6.b03 \
+    device/htc/k2_cl/firmware/q6.b04:/system/etc/firmware/q6.b04 \
+    device/htc/k2_cl/firmware/q6.b05:/system/etc/firmware/q6.b05 \
+    device/htc/k2_cl/firmware/q6.b06:/system/etc/firmware/q6.b06 \
+    device/htc/k2_cl/firmware/q6.mdt:/system/etc/firmware/q6.mdt
+
+# GPS
+#PRODUCT_PACKAGES += \
+#    gps.k2_cl \
+>>>>>>> parent of 6f1db48... Cm10.1ify
 
 # Torch
 PRODUCT_PACKAGES += \
     Torch
 
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    e2fsck
-
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
+
+# Extra properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.setupwizard.enable_bypass=1 \
+    dalvik.vm.lockprof.threshold=500 \
+    ro.com.google.locationfeatures=1 \
+    dalvik.vm.dexopt-flags=m=y
 
 # We have enough space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+# Set build date
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi

@@ -26,23 +26,20 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
-# inherit from S4 common
--include device/htc/s4-common/BoardConfigCommon.mk
+# inherit from common msm8960
+-include device/htc/msm8960-common/BoardConfigCommon.mk
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := k2_cl
 
 # Kernel
-#BOARD_KERNEL_BASE := 0x80400000
-#BOARD_KERNEL_PAGE_SIZE := 2048
-#BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8
+BOARD_KERNEL_BASE := 0x80400000
+BOARD_KERNEL_PAGE_SIZE := 2048
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x81808000
-#TARGET_PREBUILT_KERNEL := device/htc/k2_cl/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := device/htc/k2_cl/prebuilt/kernel
 TARGET_KERNEL_CONFIG := k2_cl_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/k2
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/k2_cl/bluetooth
 
 # Use libril in the device tree
 BOARD_PROVIDES_LIBRIL := true
@@ -51,12 +48,15 @@ BOARD_PROVIDES_LIBRIL := true
 TARGET_SCREEN_HEIGHT := 800
 TARGET_SCREEN_WIDTH := 480
 
+# HTCLOG
+COMMON_GLOBAL_CFLAGS += -DHTCLOG
+
 # QCOM GPS
 #BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 #BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := k2_cl
 
 # Lights
-#TARGET_PROVIDES_LIBLIGHTS := true
+TARGET_PROVIDES_LIBLIGHTS := true
 
 # Wifi related defines
 WIFI_BAND                        := 802_11_ABG
@@ -102,15 +102,14 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16776704
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1426062336
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1241513472
 BOARD_FLASH_BLOCK_SIZE := 512
+BOARD_VOLD_MAX_PARTITIONS := 38
 
 # Vold
-BOARD_VOLD_MAX_PARTITIONS := 38
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Use power button as select in recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# Recovery
-TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/k2_cl/recovery/kernel
+# Fix FB flicker in recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
