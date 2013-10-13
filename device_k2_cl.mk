@@ -78,7 +78,6 @@ PRODUCT_COPY_FILES += \
 
 # MSM8930 firmware
 PRODUCT_COPY_FILES += \
-<<<<<<< HEAD
     device/htc/k2_cl/rootdir/etc/fstab.qcom:recovery/root/fstab.qcom
 
 # NFC
@@ -88,7 +87,6 @@ PRODUCT_PACKAGES += \
     Nfc \
     Tag \
     com.android.nfc_extras
-=======
     device/htc/k2_cl/firmware/a300_pm4.fw:/system/etc/firmware/a300_pm4.fw \
     device/htc/k2_cl/firmware/a300_pfp.fw:/system/etc/firmware/a300_pfp.fw \
     device/htc/k2_cl/firmware/modem_fw.b00:/system/etc/firmware/modem_fw.b00 \
@@ -135,7 +133,6 @@ PRODUCT_PACKAGES += \
 # GPS
 #PRODUCT_PACKAGES += \
 #    gps.k2_cl \
->>>>>>> parent of 6f1db48... Cm10.1ify
 
 # Torch
 PRODUCT_PACKAGES += \
