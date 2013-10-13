@@ -1,17 +1,17 @@
 #
-# Copyright (C) 2013 Simon Sickle <simon@simonsickle.com>
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Copyright (C) 2011 The CyanogenMod Project
 #
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
@@ -23,8 +23,10 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/k2_cl/overlay
 
 # Boot ramdisk setup
 PRODUCT_COPY_FILES += \
-    device/htc/k2_cl/ramdisk/init.target.rc:root/init.target.rc \
-    device/htc/k2_cl/ramdisk/ueventd.target.rc:root/ueventd.target.rc
+    device/htc/k2_cl/ramdisk/fstab.k2_cl:root/fstab.k2_cl \
+    device/htc/k2_cl/ramdisk/init.k2_cl.rc:root/init.k2_cl.rc \
+    device/htc/k2_cl/ramdisk/init.k2_cl.usb.rc:root/init.k2_cl.usb.rc \
+    device/htc/k2_cl/ramdisk/ueventd.k2_cl.rc:root/ueventd.k2_cl.rc
 
 # recovery and custom charging
 PRODUCT_COPY_FILES += \
@@ -34,9 +36,10 @@ PRODUCT_COPY_FILES += \
     device/htc/k2_cl/recovery/sbin/detect_key:recovery/root/sbin/detect_key
 
 # HTC BT audio config
-PRODUCT_COPY_FILES += \
-    device/htc/k2_cl/configs/AudioBTID.csv:system/etc/AudioBTID.csv \
-    device/htc/k2_cl/configs/AudioBTIDnew.csv:system/etc/AudioBTIDnew.csv
+PRODUCT_COPY_FILES += device/htc/k2_cl/configs/AudioBTID.csv:system/etc/AudioBTID.csv
+
+# QC thermald config
+PRODUCT_COPY_FILES += device/htc/msm8960-common/configs/thermald.conf:system/etc/thermald.conf
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -78,15 +81,6 @@ PRODUCT_COPY_FILES += \
 
 # MSM8930 firmware
 PRODUCT_COPY_FILES += \
-    device/htc/k2_cl/rootdir/etc/fstab.qcom:recovery/root/fstab.qcom
-
-# NFC
-PRODUCT_PACKAGES += \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag \
-    com.android.nfc_extras
     device/htc/k2_cl/firmware/a300_pm4.fw:/system/etc/firmware/a300_pm4.fw \
     device/htc/k2_cl/firmware/a300_pfp.fw:/system/etc/firmware/a300_pfp.fw \
     device/htc/k2_cl/firmware/modem_fw.b00:/system/etc/firmware/modem_fw.b00 \
@@ -140,7 +134,7 @@ PRODUCT_PACKAGES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
 
 # Extra properties
 PRODUCT_PROPERTY_OVERRIDES += \
